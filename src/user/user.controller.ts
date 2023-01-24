@@ -10,6 +10,7 @@ import { ApiTags, ApiResponse, ApiOperation, ApiBody } from '@nestjs/swagger';
 import { validate } from 'class-validator';
 import { User } from '../models/user.model';
 import { UserService } from './user.service';
+import { UserDto } from './dto/user.dto';
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
 
@@ -23,11 +24,30 @@ export class UserController {
   @ApiResponse({
     status: 200,
     description: 'Return all users',
-    type: User,
+    type: UserDto,
     isArray: true,
+    content: {
+      'application/json': {
+        example: {
+          users: [
+            {
+              id: 1,
+              name: 'user1',
+              email: 'user1@example.com',
+            },
+            {
+              id: 2,
+              name: 'user2',
+              email: 'user2@example.com',
+            },
+          ],
+        },
+      },
+    },
   })
-  async findAll(): Promise<User[]> {
-    return await this.userService.findAll();
+  async findAll(): Promise<UserDto[]> {
+    const users = await this.userService.findAll();
+    return users;
   }
 
   @Post('register')
@@ -74,6 +94,18 @@ export class UserController {
   @ApiResponse({
     status: 200,
     description: 'Successful login',
+    content: {
+      'application/json': {
+        example: {
+          user: {
+            id: 1,
+            name: 'user1',
+            email: 'user1@example.com',
+          },
+          token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+        },
+      },
+    },
   })
   @ApiResponse({
     status: 401,
