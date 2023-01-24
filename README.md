@@ -1,3 +1,5 @@
+# Patient Agenda
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
@@ -24,12 +26,20 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+[Nest](https://github.com/nestjs/nest) framework TypeScript project. Patients Agenda.
 
-## Installation
+## Instalación
+
+1. Descargar el repositorio de git:
 
 ```bash
-$ yarn install
+$ git clone git@github.com:atuxlife/patients-agenda.git
+```
+
+2. Ya copiado entrar al directorio
+
+```bash
+$ cd patients-agenda
 ```
 
 ## Running the app
