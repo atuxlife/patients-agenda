@@ -56,7 +56,9 @@ docker-compose up -d
 
 5. Ya con esto los contenedores estarán arriba y listos para usar el microservicio con la siguiente URL:
 
+```bash
 [http://localhost:5000/api](http://localhost:5000/api)
+```
 
 Ahí inicialmente verán la documentación hecha con Swagger, donde estarán los diferentes endpoints que conforman el microservicio, cómo se acceden a ellos, los verbos que usan y los inputs que debe tener, así como las respuestas que da cada uno de ellos.
 
