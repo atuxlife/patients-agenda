@@ -28,7 +28,7 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript project. Patients Agenda.
 
-## Instalación
+## Instalación y puesta en marcha
 
 1. Descargar el repositorio de git:
 
@@ -42,30 +42,46 @@ $ git clone git@github.com:atuxlife/patients-agenda.git
 $ cd patients-agenda
 ```
 
-## Running the app
+3. Copiar el env.example a .env
 
 ```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
+$ cp env.example .env
 ```
 
-## Test
+4. Crear y ejecutar los contenedores en segundo plano. Esto instalará y configurará las dependencias y echará a andar la aplicación.
 
 ```bash
-# unit tests
-$ yarn run test
+docker-compose up -d
+```
 
-# e2e tests
-$ yarn run test:e2e
+5. Ya con esto los contenedores estarán arriba y listos para usar el microservicio con la siguiente URL:
 
-# test coverage
-$ yarn run test:cov
+[http://localhost:5000/api](http://localhost:5000/api)
+
+Ahí inicialmente verán la documentación hecha con Swagger, donde estarán los diferentes endpoints que conforman el microservicio, cómo se acceden a ellos, los verbos que usan y los inputs que debe tener, así como las respuestas que da cada uno de ellos.
+
+Se implementaron las validaciones solicitadas:
+
+- Teléfono sólo números.
+- Documento de identidad sólo números.
+- Correo electrónico con el formato debido.
+- Y validación que el usuario no exista buscándolo por documento de identidad y correo electrónico. Si existe el usuario con esta consulta, no permite crearlo.
+- Los mensajes y tipos de respuesta también fueron implementados.
+
+Cualquier duda, inquietud o sugerencia estoy atento a recibirla.
+
+## Extras
+
+1. Bajar los contenedores:
+
+```bash
+$ docker-compose down
+```
+
+2. Eliminar todos los contenedores vinculados en el proyecto. Nota: hay que estar en el directorio donde estén los archivos Dockerfile y docker-compose.yml
+
+```bash
+$ docker-compose down -v
 ```
 
 ## Support
